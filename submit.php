@@ -5,12 +5,12 @@ require 'vendor/autoload.php';
 echo "Inside submit  page";
 
 if(!empty($_POST)){
-	echo $_POST['email'];
-	echo $_POST['phone'];
+echo $_POST['email'];
+echo $_POST['phone'];
 }
 else {
 
-	echo "No data has been posted";
+echo "No data has been posted";
 }
 print_r ($_POST);
 
@@ -19,25 +19,25 @@ echo $_FILES['userfile'];
 print_r ($_FILES);
 
 if (isset ($_FILES['userfile'])){
-	$uploaddir = '/tmp/';
-	$uploadfile = $uploaddir. basename($_FILES['userfile']['name']);
+$uploaddir = '/tmp/';
+$uploadfile = $uploaddir. basename($_FILES['userfile']['name']);
 
 if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
-    print "File is valid, and was successfully uploaded.\n";
+print "File is valid, and was successfully uploaded.\n";
 } else {
-    print "Couldnt upload file\n";
+print "Couldnt upload file\n";
 
 }
 
 print 'Here is some more debugging info:';
 print_r($_FILES);
 
-use Aws\S3\S3Client;
+//<!-- use Aws\S3\S3Client; -->
 $s3=new Aws\S3\S3Client([
-    'version' => 'latest',
+'version' => 'latest',
     'region'  => 'us-west-2'
 ]);
-$bucket = uniqid("usnehaS3-", false);
+$bucket = uniqid("usnehaS3", false);
 print "Creating bucket named {$bucket}\n";
 $result = $s3->createBucket([
     'ACL' => 'public-read',
