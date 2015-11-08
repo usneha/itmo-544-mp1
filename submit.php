@@ -35,9 +35,9 @@ print_r($_FILES);
 //<!-- use Aws\S3\S3Client; -->
 $s3=new Aws\S3\S3Client([
 'version' => 'latest',
-    'region'  => 'us-east-1'
+    'region'  => 'us-west-2'
 ]);
-$bucket = uniqid("usnehaS3", false);
+$bucket = uniqid("usnehas3", false);
 print "Creating bucket named {$bucket}\n";
 $result = $s3->createBucket([
     'ACL' => 'public-read',
