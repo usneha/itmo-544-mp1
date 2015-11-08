@@ -1,4 +1,6 @@
-are -a cleanupARR
+#! /bin/bash
+
+declare -a cleanupARR
 declare -a cleanupLBARR
 declare -a dbInstanceARR
 
