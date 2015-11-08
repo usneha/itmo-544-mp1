@@ -13,7 +13,7 @@ sudo apt-get install php5-mysql
 
 # passing the db instances to the setup.php script
 
-chmod 700 /itmo-544-mp1/setup.php
+chmod 700 ./itmo-544-mp1/setup.php
 
 php ./itmo-544-mp1/setup.php $dbresult
 
