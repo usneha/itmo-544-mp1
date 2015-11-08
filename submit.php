@@ -1,8 +1,8 @@
 <?php
-session_start();
-require 'vendor/autoload.php';
+	session_start();
+	require 'vendor/autoload.php';
 
-echo "Inside submit  page";
+	echo "Inside submit  page";
 
 if(!empty($_POST)){
 echo $_POST['email'];
@@ -35,7 +35,7 @@ print_r($_FILES);
 //<!-- use Aws\S3\S3Client; -->
 $s3=new Aws\S3\S3Client([
 'version' => 'latest',
-    'region'  => 'us-west-2'
+    'region'  => 'us-east-1'
 ]);
 $bucket = uniqid("usnehaS3", false);
 print "Creating bucket named {$bucket}\n";
@@ -43,8 +43,12 @@ $result = $s3->createBucket([
     'ACL' => 'public-read',
     'Bucket' => $bucket
 ]);
+print 'outside the create bucket command';
+
 $result = $s3->waitUntil('BucketExists',array('Bucket' => $bucket));
+
 echo "bucket creation done";
+
 $result = $s3->putObject([
     'ACL' => 'public-read',
     'Bucket' => $bucket,
