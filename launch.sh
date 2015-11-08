@@ -51,7 +51,7 @@ aws elb register-instances-with-load-balancer --load-balancer-name usnehaLb --in
 
 
 echo "creating launch configuration"
-aws autoscaling create-launch-configuration --launch-configuration-name usnehaLc --image-id $1 --key-name $4  --security-groups $5 --instance-type $3 --user-data file://itmo-544-mp1-env/install-env.sh --iam-instance-profile phpdeveloperRole
+#aws autoscaling create-launch-configuration --launch-configuration-name usnehaLc --image-id $1 --key-name $4  --security-groups $5 --instance-type $3 --user-data file://itmo-544-mp1-env/install-env.sh --iam-instance-profile phpdeveloperRole
 
 echo "creating auto scaling group"
 #aws autoscaling create-auto-scaling-group --auto-scaling-group-name usnehaAsg --launch-configuration-name usnehaLc --load-balancer-names usnehaLb  --health-check-type ELB --min-size 1 --max-size 3 --desired-capacity 2 --default-cooldown 600 --health-check-grace-period 120 --vpc-zone-identifier $6 
@@ -70,7 +70,7 @@ result= aws rds create-db-instance --db-name usnehadb --db-instance-identifier u
 
 aws rds wait db-instance-available --db-instance-identifier usneha
  
-chmod 700 /itmo-544-mp1/dbcreate.sh
+chmod 700 ./itmo-544-mp1/dbcreate.sh
 ./itmo-544-mp1/dbcreate.sh
 
 echo "ALL DONE in  launch script"
