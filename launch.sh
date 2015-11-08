@@ -1,6 +1,9 @@
 #!/bin/bash
 
 # running the clenaup script to ensure there are no "already exists" errors
+
+chmod 700 ./itmo-544-mp1/cleanup.sh
+
 ./itmo-544-mp1/cleanup.sh
 
 declare -a InstanceArray
@@ -23,6 +26,8 @@ if [ ${#InstanceRunninArray[@]} -eq 0 ];then
 
 sleep 30
 
+fi
+
 # waiting for instances to be available
 #aws ec2 wait --region us-west-2b instance-running --instance-ids ${InstanceRunningArray[@]}
 
@@ -32,6 +37,7 @@ mapfile -t InstanceArray < <(aws ec2 describe-instances --filter Name=instance-s
 #echo "Instance IDs are ${InstanceArray[@]}"
 
 # using the subnets and security groups entered by user in the launch script
+
 echo "creating load balancer"
 aws elb create-load-balancer --load-balancer-name usnehaLb --listeners Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80 --subnets $6 --security-groups $5
 
@@ -48,7 +54,7 @@ echo "creating launch configuration"
 aws autoscaling create-launch-configuration --launch-configuration-name usnehaLc --image-id $1 --key-name $4  --security-groups $5 --instance-type $3 --user-data file://itmo-544-mp1-env/install-env.sh --iam-instance-profile phpdeveloperRole
 
 echo "creating auto scaling group"
-aws autoscaling create-auto-scaling-group --auto-scaling-group-name usnehaAsg --launch-configuration-name usnehaLc --load-balancer-names usnehaLb  --health-check-type ELB --min-size 1 --max-size 3 --desired-capacity 2 --default-cooldown 600 --health-check-grace-period 120 --vpc-zone-identifier $6 
+#aws autoscaling create-auto-scaling-group --auto-scaling-group-name usnehaAsg --launch-configuration-name usnehaLc --load-balancer-names usnehaLb  --health-check-type ELB --min-size 1 --max-size 3 --desired-capacity 2 --default-cooldown 600 --health-check-grace-period 120 --vpc-zone-identifier $6 
 
 
 
@@ -64,7 +70,7 @@ result= aws rds create-db-instance --db-name usnehadb --db-instance-identifier u
 
 aws rds wait db-instance-available --db-instance-identifier usneha
  
-
+chmod 700 /itmo-544-mp1/dbcreate.sh
 ./itmo-544-mp1/dbcreate.sh
 
 echo "ALL DONE in  launch script"
