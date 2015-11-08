@@ -31,6 +31,8 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
 
 print 'Here is some more debugging info:';
 print_r($_FILES);
+
+use Aws\S3\S3Client;
 $s3=new Aws\S3\S3Client([
     'version' => 'latest',
     'region'  => 'us-west-2'
