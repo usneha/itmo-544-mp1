@@ -24,6 +24,7 @@ $link = mysqli_connect($endpoint,"username","password","usnehadb",3306);
 <!DOCTYPE html>
 <html><head>
 <!-- adding jquery gallery as per graduate requirement -->
+<link rel="stylesheet" href="https://raw.githubusercontent.com/usneha/itmo-544-mp1/master/css/magnific-popup.css" />
 
 <style>
 
@@ -37,8 +38,13 @@ $link = mysqli_connect($endpoint,"username","password","usnehadb",3306);
 	border: 1px;
 }
 
-<link rel="stylesheet" href="https://raw.githubusercontent.com/usneha/itmo-544-mp1/master/css/magnific-popup.css" />
 </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="https://raw.githubusercontent.com/usneha/itmo-544-mp1/master/js/jquery.magnific-popup.js"></script>
+
+<script src="https://raw.githubusercontent.com/usneha/itmo-544-mp1/master/js/jquery.magnific-popup.min.js"></script>
 
 
 </head>
@@ -93,10 +99,10 @@ $link->close();
 
 </body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <script src="https://raw.githubusercontent.com/usneha/itmo-544-mp1/master/js/jquery.magnific-popup.js"></script>
 
 <script src="https://raw.githubusercontent.com/usneha/itmo-544-mp1/master/js/jquery.magnific-popup.min.js"></script>
-
+-->
 </html>
