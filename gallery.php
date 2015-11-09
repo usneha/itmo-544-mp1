@@ -84,7 +84,7 @@ $endpoint = "";
 
 #get the end point to the instance
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
-    print "============\n". $endpoint . "================";
+   # print "============\n". $endpoint . "================";
 
 //echo "endpoint is available";
 //echo "Inside Gallery code";
