@@ -60,16 +60,22 @@ else
 {
 if(isset($_POST['email'])){
 $useremail = $_POST['email'];
-$sqlstat= "SELECT * FROM items WHERE Email='$useremail'";
+$sqlstat= "SELECT RawS3Url FROM items WHERE Email='$useremail'";
 }
 else
 {
-$sqlstat= "SELECT * FROM items";
-}
+$sqlstat= "SELECT RawS3Url FROM items";
 
 $output = mysqli_query($link, $sqlstat);
+$link->real_query("SELECT RawS3Url FROM items WHERE email = '$useremail'");
+$res = $link->use_result();
+echo "Result set order...\n";
+while ($row = $res->fetch_assoc()) {
+    echo "<img src =\" " . $row['s3rawurl'] . "\" /><img src =\"" .$row['s3finishedurl'] . "\"/>";
+echo $row['id'] . "Email: " . $row['email'];
+}
 
-//$link->real_query("SELECT * FROM items WHERE email = '$email'");
+}
 //$link->real_query("SELECT * FROM items");
 $res = $link->use_result();
 echo "Result set order...\n";
