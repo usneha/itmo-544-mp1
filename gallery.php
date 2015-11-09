@@ -11,14 +11,26 @@ require 'vendor/autoload.php';
 
 
 #create RDSclient using the us-west-2 
-$rds = new Aws\Rds\RdsClient([
-    'version' => 'latest',
-    'region'  => 'us-west-2'
-]);
+#$rds = new Aws\Rds\RdsClient([
+ #   'version' => 'latest',
+  #  'region'  => 'us-west-2'
+#]);
+
+use Aws\Rds\RdsClient;
+$client = RdsClient::factory(array(
+'version' => 'latest',
+'region'  => 'us-west-2'
+));
+
+$result = $client->describeDBInstances(array(
+    'DBInstanceIdentifier' => 'usneha',
+));
+
+$endpoint = "";
 
 
 #fetch the DB instance
-$result = $rds->describeDBInstances(['DBInstanceIdentifier' => 'usneha']);
+#$result = $rds->describeDBInstances(['DBInstanceIdentifier' => 'usneha']);
 
 
 #get the end point to the instance
@@ -30,9 +42,6 @@ echo "Inside Gallery code";
 
 $link = mysqli_connect($endpoint,"username","password","usnehadb",3306);
 
-$result = $client->describeDBInstances(array(
-    'DBInstanceIdentifier' => 'usneha',
-));
 
 
 /* check connection */
