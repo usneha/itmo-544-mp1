@@ -49,19 +49,19 @@ fi
 
 mapfile -t dbInstanceARR < <(aws rds describe-db-instances --output json | grep "\"DBInstanceIdentifier" | sed "s/[\"\:\, ]//g" | sed "s/DBInstanceIdentifier//g" )
 
-if [ ${#dbInstanceARR[@]} -gt 0 ]
-   then
-   echo "Deleting existing RDS database-instances"
-   LENGTH=${#dbInstanceARR[@]}  
+#if [ ${#dbInstanceARR[@]} -gt 0 ]
+ #  then
+  # echo "Deleting existing RDS database-instances"
+   #LENGTH=${#dbInstanceARR[@]}  
 
-   for (( i=0; i<${LENGTH}; i++));
-      do 
-      aws rds delete-db-instance --db-instance-identifier ${dbInstanceARR[i]} --skip-final-snapshot --output text
-      aws rds wait db-instance-deleted --db-instance-identifier ${dbInstanceARR[i]} --output text
-      sleep 1
-   done
-fi
-
+   #for (( i=0; i<${LENGTH}; i++));
+    #  do 
+     # aws rds delete-db-instance --db-instance-identifier ${dbInstanceARR[i]} --skip-final-snapshot --output text
+      #aws rds wait db-instance-deleted --db-instance-identifier ${dbInstanceARR[i]} --output text
+      #sleep 1
+  # done
+#fi
+*/
 #delete db subnet group
 aws rds delete-db-subnet-group --db-subnet-group-name usnehasg
 
