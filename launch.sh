@@ -29,13 +29,10 @@ sleep 30
 
 fi
 
-# waiting for instances to be available
-#aws ec2 wait --region us-west-2b instance-running --instance-ids ${InstanceRunningArray[@]}
 
 # creating instance id array to use in the next steps for attaching instances to loadbalancer
 mapfile -t InstanceArray < <(aws ec2 describe-instances --filter Name=instance-state-code,Values=16 --output table | grep InstanceId | sed "s/|//g" | tr -d ' ' | sed "s/InstanceId//g") 
 
-#echo "Instance IDs are ${InstanceArray[@]}"
 
 # using the subnets and security groups entered by user in the launch script
 
