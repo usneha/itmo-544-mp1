@@ -70,52 +70,52 @@ $sqlstat= "SELECT * FROM items";
 $output = mysqli_query($link, $sqlstat);
 
 
-	$link->real_query("SELECT * FROM items WHERE email = '$email'");
+	//$link->real_query("SELECT * FROM items WHERE email = '$email'");
 	//$link->real_query("SELECT * FROM items");
-	$res = $link->use_result();
-	echo "Result set order...\n";
-	while ($row = $res->fetch_assoc()) {
-    		echo "<img src =\" " . $row['s3rawurl'] . "\" /><img src =\"" .$row['s3finishedurl'] . "\"/>";
-	echo $row['id'] . "Email: " . $row['email'];
-	}
-	$link->close();
+	//$res = $link->use_result();
+	//echo "Result set order...\n";
+	//while ($row = $res->fetch_assoc()) {
+    	//	echo "<img src =\" " . $row['s3rawurl'] . "\" /><img src =\"" .$row['s3finishedurl'] . "\"/>";
+	//echo $row['id'] . "Email: " . $row['email'];
+	//}
+	//$link->close();
 
 
 
-//$imgPath = array();
+$imgPath = array();
 //print "Result set order...\n";
 
-//if (mysqli_num_rows($output) > 0) {
-  //  while($row = mysqli_fetch_assoc($output)) {
+if (mysqli_num_rows($output) > 0) {
+    while($row = mysqli_fetch_assoc($output)) {
         
-    //    $imgPath[$row["JpgFileName"]] = $row["RawS3URL"];
-      //  echo "id: " . $row["ID"]."- RawS3URL" . $row["RawS3URL"]. "<br>";
+        $imgPath[$row["JpgFileName"]] = $row["RawS3URL"];
+        echo "id: " . $row["ID"]."- RawS3URL" . $row["RawS3URL"]. "<br>";
 	
    // echo "<img src =\" " . $row['s3rawurl'] . "\" /><img src =\"" .$row['s3finishedurl'] . "\"/>";
    //echo $row['id'] . "Email: " . $row['email'];
 
-   // }
-//} 
-//else {
-  //  echo "no rows in the output";
-//}
--->
-#$link->close();
-//}
+   }
+} 
+else {
+    echo "no rows in the output";
+}
+
+$link->close();
+}
 ?>
-<!--
+
 <ul class="magnific-gallery">
   <?php foreach ($imgPath as $key => $value) {
   ?>
   <li>	
 
-  <img src="<?php echo $value ?>"></img>
-<a href="<?php echo $value ?>"> <img src="<?php echo $value ?>"></img><?php echo $key ?></a>
+  //<img src="<?php echo $value ?>"></img>
+	<a href="<?php echo $value ?>"> <img src="<?php echo $value ?>"></img><?php echo $key ?></a>
 
   </li>
   <?php }?>
 </ul>
--->
+
 </body>
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
