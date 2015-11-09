@@ -89,7 +89,7 @@ if (mysqli_num_rows($output) > 0) {
     while($row = mysqli_fetch_assoc($output)) {
         
         $imgPath[$row["JpgFileName"]] = $row["RawS3URL"];
-        echo "id: " . $row["ID"]."- RawS3URL" . $row["RawS3URL"]. "<br>";
+      //  echo "id: " . $row["ID"]."- RawS3URL" . $row["RawS3URL"]. "<br>";
 	
    // echo "<img src =\" " . $row['s3rawurl'] . "\" /><img src =\"" .$row['s3finishedurl'] . "\"/>";
    //echo $row['id'] . "Email: " . $row['email'];
@@ -111,7 +111,8 @@ $link->close();
 
   //<img src="<?php echo $value ?>"></img>
 	<a href="<?php echo $value ?>"> <img src="<?php echo $value ?>"></img><?php echo $key ?></a>
-
+	<?php echo $value; ?>
+	<?php echo $key; ?>
   </li>
   <?php }?>
 </ul>
