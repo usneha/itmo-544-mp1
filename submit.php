@@ -73,7 +73,7 @@ $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
     print "============\n". $endpoint . "================";
 echo "endpoint is available";
 
-$link = mysqli_connect($endpoint,"usneha","password","usnehadb",3306) or die("Error " . mysqli_error($link));
+$link = mysqli_connect($endpoint,"username","password","usnehadb",3306) or die("Error " . mysqli_error());
 
 print_r($link);
 if (mysqli_connect_errno()) {
