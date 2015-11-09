@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://raw.githubusercontent.com/usneha/itmo-544-mp1/master/css/magnific-popup.css" />
 
 <style>
-.magnific-gallery img{
+.magnific-gallery{
 	float: relative;
         width:75px;
         border: 1px;
@@ -25,11 +25,10 @@
 <script src="https://raw.githubusercontent.com/usneha/itmo-544-mp1/master/js/jquery.magnific-popup.min.js"></script>
 
 
-
-
 </head>
 <body>
 <h3> Welcome to your Gallery! </h3>
+<div class="magnific-gallery">
 <?php
 session_start();
 #$email = $_POST["useremail"];
@@ -81,12 +80,14 @@ $link->real_query("SELECT * FROM items");
 //$link->real_query("SELECT * FROM items");
 $res = $link->use_result();
 echo "Result set order...\n";
+
 while ($row = $res->fetch_assoc()) {
-    echo "<img class="magnific-gallery" src =\" " . $row['RawS3Url'] . "\" /><img src =\"" .$row['FinishedS3Url'] . "\"/>";
+    echo "<img src =\" " . $row['RawS3Url'] . "\" /><img src =\"" .$row['FinishedS3Url'] . "\"/>";
   //  echo $row['RawS3Url'];
 #echo $row['id'] . "Email: " . $row['email'];
 }
 $link->close();
 ?>
+</div>
 </body>
 </html>
