@@ -56,6 +56,7 @@ $res = $link->use_result();
 echo "Result set order...\n";
 while ($row = $res->fetch_assoc()) {
     echo "<img src =\" " . $row['s3rawurl'] . "\" /><img src =\"" .$row['s3finishedurl'] . "\"/>";
+    echo $row['S3RawUrl'];
 #echo $row['id'] . "Email: " . $row['email'];
 }
 $link->close();
