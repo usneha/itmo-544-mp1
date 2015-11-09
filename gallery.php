@@ -9,6 +9,7 @@
 	float: relative;
         width:75px;
         border: 1px;
+	color: #545454;
 }
 
 #body{
