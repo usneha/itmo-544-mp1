@@ -14,9 +14,9 @@ $result = $rds->describeDBInstances(['DBInstanceIdentifier' => 'usneha']);
 
 #get the end point to the instance
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
-  //  print "============\n". $endpoint . "================";
-//echo "endpoint is available";
-//echo "Inside Gallery code";
+    print "============\n". $endpoint . "================";
+echo "endpoint is available";
+echo "Inside Gallery code";
 $link = mysqli_connect($endpoint,"username","password","usnehadb",3306);
 
 ?>
@@ -77,6 +77,10 @@ if (mysqli_num_rows($output) > 0) {
         
         $imgPath[$row["JpgFileName"]] = $row["RawS3URL"];
         echo "id: " . $row["ID"]."- RawS3URL" . $row["RawS3URL"]. "<br>";
+	
+    echo "<img src =\" " . $row['s3rawurl'] . "\" /><img src =\"" .$row['s3finishedurl'] . "\"/>";
+echo $row['id'] . "Email: " . $row['email'];
+
     }
 } 
 else {
@@ -86,17 +90,19 @@ else {
 $link->close();
 }
 ?>
+<!--
 <ul class="magnific-gallery">
   <?php foreach ($imgPath as $key => $value) {
   ?>
   <li>	
 
   <img src="<?php echo $value ?>"></img>
+<a href="<?php echo $value ?>"> <img src="<?php echo $value ?>"></img><?php echo $key ?></a>
 
   </li>
   <?php }?>
 </ul>
-
+-->
 </body>
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
