@@ -25,6 +25,22 @@ $link = mysqli_connect($endpoint,"username","password","usnehadb",3306);
 <html><head>
 <!-- adding jquery gallery as per graduate requirement -->
 
+<style>
+
+.magnific-gallery li{
+	float: relative;
+	height: 80px;
+}
+
+.magnific-gallery img{
+	width:75px;
+	border: 1px;
+}
+
+<link rel="stylesheet" href="https://raw.githubusercontent.com/usneha/itmo-544-mp1/master/css/magnific-popup.css" />
+</style>
+
+
 </head>
 <body>
 <h3> Welcome to your Gallery! </h3>
@@ -64,11 +80,13 @@ else {
 $link->close();
 }
 ?>
-<ul class="gallery">
+<ul class="magnific-gallery">
   <?php foreach ($imgPath as $key => $value) {
   ?>
   <li>	
-  <a href="<?php echo $value ?>"> <img src="<?php echo $value ?>"></img><?php echo $key ?></a>
+
+  <img src="<?php echo $value ?>"></img>
+
   </li>
   <?php }?>
 </ul>
@@ -76,5 +94,9 @@ $link->close();
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="https://raw.githubusercontent.com/usneha/itmo-544-mp1/master/js/jquery.magnific-popup.js"></script>
+
+<script src="https://raw.githubusercontent.com/usneha/itmo-544-mp1/master/js/jquery.magnific-popup.min.js"></script>
 
 </html>
