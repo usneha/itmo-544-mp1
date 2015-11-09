@@ -69,26 +69,39 @@ $sqlstat= "SELECT * FROM items";
 
 $output = mysqli_query($link, $sqlstat);
 
-$imgPath = array();
-print "Result set order...\n";
 
-if (mysqli_num_rows($output) > 0) {
-    while($row = mysqli_fetch_assoc($output)) {
+	$link->real_query("SELECT * FROM items WHERE email = '$email'");
+	//$link->real_query("SELECT * FROM items");
+	$res = $link->use_result();
+	echo "Result set order...\n";
+	while ($row = $res->fetch_assoc()) {
+    		echo "<img src =\" " . $row['s3rawurl'] . "\" /><img src =\"" .$row['s3finishedurl'] . "\"/>";
+	echo $row['id'] . "Email: " . $row['email'];
+	}
+	$link->close();
+
+
+
+//$imgPath = array();
+//print "Result set order...\n";
+
+//if (mysqli_num_rows($output) > 0) {
+  //  while($row = mysqli_fetch_assoc($output)) {
         
-        $imgPath[$row["JpgFileName"]] = $row["RawS3URL"];
-        echo "id: " . $row["ID"]."- RawS3URL" . $row["RawS3URL"]. "<br>";
+    //    $imgPath[$row["JpgFileName"]] = $row["RawS3URL"];
+      //  echo "id: " . $row["ID"]."- RawS3URL" . $row["RawS3URL"]. "<br>";
 	
-    echo "<img src =\" " . $row['s3rawurl'] . "\" /><img src =\"" .$row['s3finishedurl'] . "\"/>";
-echo $row['id'] . "Email: " . $row['email'];
+   // echo "<img src =\" " . $row['s3rawurl'] . "\" /><img src =\"" .$row['s3finishedurl'] . "\"/>";
+   //echo $row['id'] . "Email: " . $row['email'];
 
-    }
-} 
-else {
-    echo "no rows in the output";
-}
-
-$link->close();
-}
+   // }
+//} 
+//else {
+  //  echo "no rows in the output";
+//}
+-->
+#$link->close();
+//}
 ?>
 <!--
 <ul class="magnific-gallery">
