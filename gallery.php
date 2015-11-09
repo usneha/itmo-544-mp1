@@ -29,7 +29,7 @@
 
 </head>
 <body>
-
+<h3> Welcome to your Gallery! </h3>
 <?php
 session_start();
 #$email = $_POST["useremail"];
@@ -64,8 +64,8 @@ $endpoint = "";
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
     print "============\n". $endpoint . "================";
 
-echo "endpoint is available";
-echo "Inside Gallery code";
+//echo "endpoint is available";
+//echo "Inside Gallery code";
 
 $link = mysqli_connect($endpoint,"username","password","usnehadb",3306);
 
