@@ -16,8 +16,8 @@ $result = $rds->describeDBInstances(['DBInstanceIdentifier' => 'usneha']);
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
     print "============\n". $endpoint . "================";
 echo "endpoint is available";
-
-$link = mysqli_connect($endpoint,"username","password","usnehadb");
+echo "Inside Gallery code";
+$link = mysqli_connect($endpoint,"username","password","usnehadb",3306);
 
 ?>
 
