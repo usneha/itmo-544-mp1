@@ -1,5 +1,32 @@
 <html>
 <head><title>Gallery</title>
+
+
+<link rel="stylesheet" href="https://raw.githubusercontent.com/usneha/itmo-544-mp1/master/css/magnific-popup.css" />
+
+<style>
+.magnific-gallery img{
+	float: relative;
+        width:75px;
+        border: 1px;
+}
+
+#body{
+	color:#545454;
+}
+
+
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="https://raw.githubusercontent.com/usneha/itmo-544-mp1/master/js/jquery.magnific-popup.js"></script>
+
+<script src="https://raw.githubusercontent.com/usneha/itmo-544-mp1/master/js/jquery.magnific-popup.min.js"></script>
+
+
+
+
 </head>
 <body>
 
@@ -55,8 +82,8 @@ $link->real_query("SELECT * FROM items");
 $res = $link->use_result();
 echo "Result set order...\n";
 while ($row = $res->fetch_assoc()) {
-    echo "<img src =\" " . $row['RawS3Url'] . "\" /><img src =\"" .$row['FinishedS3Url'] . "\"/>";
-    echo $row['RawS3Url'];
+    echo "<img class="magnific-gallery" src =\" " . $row['RawS3Url'] . "\" /><img src =\"" .$row['FinishedS3Url'] . "\"/>";
+  //  echo $row['RawS3Url'];
 #echo $row['id'] . "Email: " . $row['email'];
 }
 $link->close();
