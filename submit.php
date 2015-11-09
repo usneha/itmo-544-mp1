@@ -85,7 +85,7 @@ if (mysqli_connect_errno()) {
 
 echo "Connected to RDS";
 # prepared statement to insert data into items of usnehadb
-$sql_insert = "INSERT INTO items (UName,Email,Phone,RawS3Url,FinalS3Url,JpgFileName,status,Issubscribed) VALUES (?,?,?,?,?,?,?,?)";
+$sql_insert = "INSERT INTO items (UName,Email,Phone,RawS3Url,FinalS3Url,JpgFileName,status,Ifsubscribed) VALUES (?,?,?,?,?,?,?,?)";
 
 if (!($stmt = $link->prepare($sql_insert))) {
     echo "Prepare failed: (" . $link->errno . ") " . $link->error;
