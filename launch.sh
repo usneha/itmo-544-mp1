@@ -63,6 +63,16 @@ echo "creating launch configuration"
 echo "creating auto scaling group"
 #aws autoscaling create-auto-scaling-group --auto-scaling-group-name usnehaAsg --launch-configuration-name usnehaLc --load-balancer-names usnehaLb  --health-check-type ELB --min-size 1 --max-size 3 --desired-capacity 2 --default-cooldown 600 --health-check-grace-period 120 --vpc-zone-identifier $6 
 
+# creating cloud watch metrics
+echo "Cloud metrics when CPU exceeds 30 percent"
+
+aws cloudwatch put-metric-alarm --alarm-name usneha-CPU30 --alarm-description "Alarm for checking  CPU gt 30 percent" --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 300 --threshold 30 --comparison-operator GreaterThanOrEqualToThreshold  --dimensions Name=AutoScalingGroupName,Value=usnehaAsg --evaluation-periods 2 --alarm-actions arn:aws:sns:us-west-2:111122223333:MyTopic --unit Percent
+
+
+echo "Cloud metrics When CPU scales down to 10"
+
+aws cloudwatch put-metric-alarm --alarm-name usneha-CPU10 --alarm-description "Alarm for checking cpu lt 10 percent" --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 300 --threshold 10 --comparison-operator LessThanOrEqualToThreshold  --dimensions Name=AutoScalingGroupName,Value=usnehaAsg --evaluation-periods 2 --alarm-actions arn:aws:sns:us-west-2:111122223333:MyTopic --unit Percent
+
 
 # creating db subnet group
 aws rds create-db-subnet-group --db-subnet-group-name usnehasg --db-subnet-group-description usneha-subnetgrp --subnet-ids subnet-935e14f6 subnet-3a6b034d
