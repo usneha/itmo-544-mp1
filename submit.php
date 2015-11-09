@@ -53,6 +53,7 @@ $result = $s3->putObject([
     'ACL' => 'public-read',
     'Bucket' => $bucket,
    'Key' => "uploads".$uploadfile,
+   'SourceFile' => "uploads".$uploadfile,
 'ContentType' => $_FILES['userfile']['type'],
     'Body'   => fopen($uploadfile, 'r+')
 ]);  
