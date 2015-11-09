@@ -5,7 +5,7 @@
 
 <?php
 session_start();
-$email = $_POST["email"];
+$email = $_POST["useremail"];
 echo $email;
 require 'vendor/autoload.php';
 
@@ -29,9 +29,7 @@ echo "endpoint is available";
 echo "Inside Gallery code";
 
 $link = mysqli_connect($endpoint,"username","password","usnehadb",3306);
-'version' => 'latest',
-'region'  => 'us-west-2'
-));
+
 $result = $client->describeDBInstances(array(
     'DBInstanceIdentifier' => 'usneha',
 ));
