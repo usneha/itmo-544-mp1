@@ -67,7 +67,7 @@ $result = $rds->describeDBInstances(['DBInstanceIdentifier' => 'usneha']);
 
 echo "fetching result from describe db instance";
 
-print_r($result);
+//print_r($result);
 
 $endpoint = $result['DBInstances'][0]['Endpoint']['Address'];
     print "============\n". $endpoint . "================";
