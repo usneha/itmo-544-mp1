@@ -8,8 +8,10 @@
 $endpoint = $argv[1];
 echo "Connecting to mysqli"; 
 
+# connecting to mysql instance
 $link = mysqli_connect($endpoint,"username","password","usnehadb",3306) or die("Error " . mysqli_error()); 
 
+# creating table as per the requirement
 $sql = "CREATE TABLE items 
 (
 ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -20,13 +22,13 @@ RawS3Url  Varchar(256),
 FinalS3Url  Varchar(256),
 JpgFileName    Varchar(256),
 Status    TinyInt(3),
-Issubscribed TinyInt(3),
+Ifsubscribed TinyInt(3),
 CreationTime  Timestamp DEFAULT CURRENT_TIMESTAMP
 )";
 print($sql);
 
 if ($link->query($sql) === TRUE) {
-    echo "Table items created successfully";
+    echo "Table  created";
 } else {
     echo "Error creating table: " . $link->error;
 }

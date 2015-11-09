@@ -6,7 +6,7 @@ mapfile -t dbresult < <(aws rds describe-db-instances --db-instance-identifier u
 echo "waiting for the RDS database instance created in launch scirpt  to be available"
 #aws rds wait db-instance-available --db-instance-identifier usneha
  
-echo "============\n". $dbresult . "================";
+echo "=". $dbresult . "=";
 
 #installing php5-mysql in all instances
 sudo apt-get install php5-mysql

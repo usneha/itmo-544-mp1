@@ -45,6 +45,7 @@ $result = $s3->createBucket([
 ]);
 print 'outside the create bucket command';
 
+# waiting for the s3 bucket to be available
 $result = $s3->waitUntil('BucketExists',array('Bucket' => $bucket));
 
 echo "bucket creation done";
@@ -83,7 +84,7 @@ if (mysqli_connect_errno()) {
 }
 
 echo "Connected to RDS";
-
+# prepared statement to insert data into items of usnehadb
 $sql_insert = "INSERT INTO items (UName,Email,Phone,RawS3Url,FinalS3Url,JpgFileName,status,Issubscribed) VALUES (?,?,?,?,?,?,?,?)";
 
 if (!($stmt = $link->prepare($sql_insert))) {
@@ -91,7 +92,7 @@ if (!($stmt = $link->prepare($sql_insert))) {
 }
 else
 {
-echo "statement was success";
+echo "No error with prepared statement";
 }
 $uname = $_POST['username'];
 $email = $_POST['email'];
@@ -100,8 +101,8 @@ $s3rawurl = $url;
 $s3finishedurl = "none";
 $filename = basename($_FILES['userfile']['name']);
 $status =0;
-$issubscribed=0;
-$stmt->bind_param("ssssssii",$uname,$email,$phone,$s3rawurl,$s3finishedurl,$filename,$status,$issubscribed);
+$ifsubscribed=0;
+$stmt->bind_param("ssssssii",$uname,$email,$phone,$s3rawurl,$s3finishedurl,$filename,$status,$ifsubscribed);
 if (!$stmt->execute()) {
     print "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 }
@@ -114,13 +115,13 @@ print "Result set order...\n";
 if (mysqli_num_rows($output) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($output)) {
-        //this will append the path of images to an array
+        //passing image path to an imgPath array
         $imgPath[$row["JpgFileName"]] = $row["RawS3URL"];
         echo "id: " . $row["ID"]."- RawS3URL" . $row["RawS3URL"]. "<br>";
     }
 } 
 else {
-    echo "Did not get any output";
+    echo "No output!";
 }
 $link->close();
 
@@ -135,7 +136,7 @@ redirect();
 }
 else
 {
-echo "file invalid";
+echo "Invalid file";
 }
 ?>
 
