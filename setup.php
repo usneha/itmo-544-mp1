@@ -10,7 +10,7 @@ echo $endpoint;
 echo "Connecting to mysqli"; 
 
 # connecting to mysql instance
-$link = mysqli_connect($endpoint,"username","password","usnehadb") or die("Error " . mysqli_error()); 
+$link = mysqli_connect($endpoint,"username","password","usnehadb") or die("Error " . mysqli_error($link)); 
 
 # creating table as per the requirement
 $sql = "CREATE TABLE items 
