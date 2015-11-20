@@ -69,7 +69,7 @@ require 'vendor/autoload.php';
 use Aws\Rds\RdsClient;
 $client = RdsClient::factory(array(
 'version' => 'latest',
-'region'  => 'us-east-1'
+'region'  => 'us-west-2'
 ));
 
 $result = $client->describeDBInstances(array(

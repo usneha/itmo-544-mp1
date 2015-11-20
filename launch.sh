@@ -49,7 +49,7 @@ aws elb register-instances-with-load-balancer --load-balancer-name usnehaLb --in
 
 
 # getting the loadbalancer url to open in the browser
-ELBURL=(`aws elb create-load-balancer --load-balancer-name usnehaLb --listeners Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80 --subnets subnet-fa89708c --security-groups sg-ff95e599 --output=text`);
+ELBURL=(`aws elb create-load-balancer --load-balancer-name usnehaLb --listeners Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80 --subnets $6 --security-groups $5 --output=text`);
 
 firefox $ELBURL
 
@@ -72,12 +72,12 @@ echo "Cloud metrics When CPU scales down to 10"
 
 
 # creating db subnet group
-aws rds create-db-subnet-group --db-subnet-group-name usnehasg --db-subnet-group-description usneha-subnetgrp --subnet-ids subnet-fa89708c subnet-34f7e76d
+aws rds create-db-subnet-group --db-subnet-group-name usnehasg --db-subnet-group-description usneha-subnetgrp --subnet-ids subnet-935e14f6 subnet-3a6b034d
 
 
 echo "Creating DB instance"
 
-result= aws rds create-db-instance --db-name usnehadb --db-instance-identifier usneha --allocated-storage 20 --db-instance-class db.t1.micro --engine MYSQL --master-username username --master-user-password password --vpc-security-group-ids $5 --availability-zone us-east-1a  --db-subnet-group-name usnehasg --publicly-accessible
+result= aws rds create-db-instance --db-name usnehadb --db-instance-identifier usneha --allocated-storage 20 --db-instance-class db.t1.micro --engine MYSQL --master-username username --master-user-password password --vpc-security-group-ids $5 --availability-zone us-west-2a  --db-subnet-group-name usnehasg --publicly-accessible
 
 # waiting for the DB instance to be available
 

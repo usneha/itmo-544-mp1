@@ -34,7 +34,7 @@ print_r($_FILES);
 //<!-- use Aws\S3\S3Client; -->
 	$s3=new Aws\S3\S3Client([
 		'version' => 'latest',
-   		 'region'  => 'us-east-1'
+   		 'region'  => 'us-west-2'
 	]);
 	$bucket = uniqid("usnehas3", false);
 	print "Creating bucket named {$bucket}\n";
@@ -63,7 +63,7 @@ print 'outside the create bucket command';
 	echo "s3 file uploaded";
 	$rds = new Aws\Rds\RdsClient([
     		'version' => 'latest',
-    		'region'  => 'us-east-1'
+    		'region'  => 'us-west-2'
 	]);
 	$result = $rds->describeDBInstances(['DBInstanceIdentifier' => 'usneha']);
 
