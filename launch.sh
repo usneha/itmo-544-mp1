@@ -49,7 +49,7 @@ aws elb register-instances-with-load-balancer --load-balancer-name usnehaLb --in
 
 
 # getting the loadbalancer url to open in the browser
-ELBURL=(`aws elb create-load-balancer --load-balancer-name usnehaLb --listeners Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80 --subnets subnet-fa89708c --security-groups sg-3a4b3f5c --output=text`);
+ELBURL=(`aws elb create-load-balancer --load-balancer-name usnehaLb --listeners Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80 --subnets subnet-fa89708c --security-groups sg-ff95e599 --output=text`);
 
 firefox $ELBURL
 
