@@ -6,6 +6,7 @@
 # using the argument passed through createdb to this script
 
 $endpoint = $argv[1];
+echo $endpoint;
 echo "Connecting to mysqli"; 
 
 # connecting to mysql instance
