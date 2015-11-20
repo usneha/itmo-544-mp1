@@ -77,7 +77,7 @@ aws rds create-db-subnet-group --db-subnet-group-name usnehasg --db-subnet-group
 
 echo "Creating DB instance"
 
-result= aws rds create-db-instance --db-name usnehadb --db-instance-identifier usneha --allocated-storage 20 --db-instance-class db.t1.micro --engine MYSQL --master-username username --master-user-password password --vpc-security-group-ids $5 --availability-zone us-west-2a  --db-subnet-group-name usnehasg --publicly-accessible
+result= aws rds create-db-instance --db-name usnehadb --db-instance-identifier usneha --allocated-storage 20 --db-instance-class db.t1.micro --engine MYSQL --master-username username --master-user-password password --vpc-security-group-ids $5 --availability-zone us-east-1a  --db-subnet-group-name usnehasg --publicly-accessible
 
 # waiting for the DB instance to be available
 

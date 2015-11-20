@@ -63,13 +63,13 @@ require 'vendor/autoload.php';
 #create RDSclient using the us-west-2 
 #$rds = new Aws\Rds\RdsClient([
  #   'version' => 'latest',
-  #  'region'  => 'us-west-2'
+  #  'region'  => 'us-east-2'
 #]);
 
 use Aws\Rds\RdsClient;
 $client = RdsClient::factory(array(
 'version' => 'latest',
-'region'  => 'us-west-2'
+'region'  => 'us-east-1'
 ));
 
 $result = $client->describeDBInstances(array(

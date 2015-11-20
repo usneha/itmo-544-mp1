@@ -1,21 +1,4 @@
 <?php
-require 'vendor/autoload.php';
-use Aws\Sns\SnsClient;
-$snsclient =  SnsClient::factory(array(
-'region' => 'us-eat-1'
-));
-
-$result = $snsclient->createTopic(array(
-
-'Name' => 'uploadconfirmation',
-));
-
-echo $result;
-
-?>
-
-
-<?php
 	session_start();
 	require 'vendor/autoload.php';
 
@@ -51,7 +34,7 @@ print_r($_FILES);
 //<!-- use Aws\S3\S3Client; -->
 	$s3=new Aws\S3\S3Client([
 		'version' => 'latest',
-   		 'region'  => 'us-west-2'
+   		 'region'  => 'us-east-1'
 	]);
 	$bucket = uniqid("usnehas3", false);
 	print "Creating bucket named {$bucket}\n";
@@ -80,7 +63,7 @@ print 'outside the create bucket command';
 	echo "s3 file uploaded";
 	$rds = new Aws\Rds\RdsClient([
     		'version' => 'latest',
-    		'region'  => 'us-west-2'
+    		'region'  => 'us-east-1'
 	]);
 	$result = $rds->describeDBInstances(['DBInstanceIdentifier' => 'usneha']);
 
