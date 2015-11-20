@@ -25,8 +25,6 @@ JpgFileName    Varchar(256),
 Status    TinyInt(3),
 Ifsubscribed TinyInt(3),
 CreationTime  Timestamp DEFAULT CURRENT_TIMESTAMP,
-tsubscribe Varchar(5),
-subscriptionId Varchar(256)
 )";
 print($sql);
 

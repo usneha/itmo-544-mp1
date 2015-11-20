@@ -164,7 +164,15 @@ echo "set display name to topic";
 	echo "Subcribed to topic";
 	echo $result;
 
+for($i=0;$i<120;$i++){
+ echo $i;
+}
 
+$result = $snsclient->publish([
+	'Message' => 'Image uploaded to S3',
+	'Subject' => 'S3 Image Upload',
+	'TopicArn' => $snstopicArn,
+]); 
 
 $link->close();
 
@@ -175,7 +183,7 @@ function redirect()
    header('Location: gallery.php', true, 303);
    die();
 }
-redirect();
+//redirect();
 }
 else
 {
