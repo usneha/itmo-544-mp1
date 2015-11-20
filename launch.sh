@@ -49,7 +49,7 @@ aws elb register-instances-with-load-balancer --load-balancer-name usnehaLb --in
 
 
 # getting the loadbalancer url to open in the browser
-ELBURL=(`aws elb create-load-balancer --load-balancer-name usnehaLb --listeners Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80 --subnets subnet-935e14f6 --security-groups sg-201e9f44 --output=text`);
+ELBURL=(`aws elb create-load-balancer --load-balancer-name usnehaLb --listeners Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80 --subnets subnet-fa89708c --security-groups sg-3a4b3f5c --output=text`);
 
 firefox $ELBURL
 
@@ -72,7 +72,7 @@ echo "Cloud metrics When CPU scales down to 10"
 
 
 # creating db subnet group
-aws rds create-db-subnet-group --db-subnet-group-name usnehasg --db-subnet-group-description usneha-subnetgrp --subnet-ids subnet-935e14f6 subnet-3a6b034d
+aws rds create-db-subnet-group --db-subnet-group-name usnehasg --db-subnet-group-description usneha-subnetgrp --subnet-ids subnet-fa89708c subnet-34f7e76d
 
 
 echo "Creating DB instance"
