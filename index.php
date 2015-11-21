@@ -17,7 +17,8 @@ session_start();
 	<div class="form-group">
 		User Name: <input type="text" name="username" value="usneha"><br>
 		E-mail: <input type="email" name="email" class-"form-control"  value=""><br>
-		Phone : <input type="text" name="phone" value=""><br>
+		<h4>Phone Number format: 13334445555 </h4>
+		Phone : <input type="text" name="phone" value="13123950502"><br>
 	</div>
 
 	<input type="hidden" name="MAX_FILE_SIZE" value="3000000"><br>
