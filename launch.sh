@@ -61,7 +61,10 @@ echo "creating auto scaling group"
 #aws autoscaling create-auto-scaling-group --auto-scaling-group-name usnehaAsg --launch-configuration-name usnehaLc --load-balancer-names usnehaLb  --health-check-type ELB --min-size 1 --max-size 3 --desired-capacity 2 --default-cooldown 600 --health-check-grace-period 120 --vpc-zone-identifier $6 
 
 # creating an sns topic for being notified in case CPU exceeds or scales down
-$topicArn = $(aws sns create-topic --name snsself)
+
+aws sns create-topic --name snsself
+
+topicArn =(`aws sns create-topic --name snsself`)
 
 echo "Topic Arn is now available $topicArn"
 
