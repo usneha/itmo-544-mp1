@@ -152,10 +152,13 @@ $result = $snsclient->setTopicAttributes([
 
 echo "set display name to topic";
 
+
+
+
 // returns the subscription arn
 	$result = $snsclient->subscribe([
     		// TopicArn is required
-    		'TopicArn' => $snstopicArn,
+    		'TopicArn' => $topicArn,
     		// Protocol is required
     		'Protocol' => 'sms',
     		'Endpoint' => '13123950502',
@@ -171,7 +174,7 @@ for($i=0;$i<120;$i++){
 $result = $snsclient->publish([
 	'Message' => 'Image uploaded to S3',
 	'Subject' => 'S3 Image Upload',
-	'TopicArn' => $snstopicArn,
+	'TopicArn' => $topicArn,
 ]); 
 
 $link->close();
