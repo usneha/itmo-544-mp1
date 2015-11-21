@@ -72,18 +72,22 @@ echo "creating auto scaling group"
 #aws sns set-topic-attributes --topic-arn $topicArn --attribute-name DisplayName --attribute-value snsself
 
 #subscribing to the created topic
-aws sns subscribe --topic-arn arn:aws:sns:us-east-1:311615471368:snsself --protocol sms --notification-endpoint 13123950502
+#aws sns subscribe --topic-arn arn:aws:sns:us-east-1:311615471368:snsself --protocol sms --notification-endpoint 13123950502
 
 # waiting for two minutes for the user to authenticate
 
-for var in {0..120}
-do
-echo -ne "."
-  sleep 1
-done
+#for var in {0..120}
+#do
+#echo -ne "."
+ # sleep 1
+#done
 
 # publishing message
-aws sns publish --topic-arn arn:aws:sns:us-east-1:311615471368:snsself --message "Alarm Trigger"
+#aws sns publish --topic-arn arn:aws:sns:us-east-1:311615471368:snsself --message "Alarm Trigger"
+
+chmod 700 ./itmo-544-mp1/snsself.php
+php /itmo-544-mp1/snsself.php
+
 
 # creating cloud watch metrics
 echo "Cloud metrics when CPU exceeds 30 percent"
