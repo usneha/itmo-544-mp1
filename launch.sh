@@ -86,7 +86,7 @@ echo "creating auto scaling group"
 #aws sns publish --topic-arn arn:aws:sns:us-east-1:311615471368:snsself --message "Alarm Trigger"
 
 chmod 700 ./itmo-544-mp1/snsself.php
-php /itmo-544-mp1/snsself.php
+php ./itmo-544-mp1/snsself.php
 
 
 # creating cloud watch metrics
