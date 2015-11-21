@@ -152,7 +152,9 @@ $result = $snsclient->setTopicAttributes([
 
 echo "set display name to topic";
 
-
+for($i=0;$i<120;$i++){
+ echo $i;
+}
 
 
 // returns the subscription arn
@@ -166,7 +168,6 @@ echo "set display name to topic";
 	
 	echo "Subcribed to topic";
 	echo $result;
-
 for($i=0;$i<120;$i++){
  echo $i;
 }
@@ -176,6 +177,7 @@ $result = $snsclient->publish([
 	'Subject' => 'S3 Image Upload',
 	'TopicArn' => $topicArn,
 ]); 
+
 
 $link->close();
 
