@@ -7,6 +7,8 @@
 	if(!empty($_POST)){
 		echo $_POST['email'];
 	echo $_POST['phone'];
+	$phone = $_POST['phone'];
+	$email = $_POST['email'];
 	}
 	else {
 
@@ -163,13 +165,13 @@ for($i=0;$i<120;$i++){
     		'TopicArn' => $topicArn,
     		// Protocol is required
     		'Protocol' => 'sms',
-    		'Endpoint' => '13123950502',
+    		'Endpoint' => $phone,
 	]);
 	
-	echo "Subcribed to topic";
+	echo "Subcribed to topic for $phone";
 	echo $result;
 for($i=0;$i<120;$i++){
- echo $i;
+ echo "=";
 }
 
 $result = $snsclient->publish([
