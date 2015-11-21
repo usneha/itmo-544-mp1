@@ -66,13 +66,13 @@ echo "creating auto scaling group"
 
 #topicArn=(`aws sns create-topic --name snsself`)
 
-echo "Topic Arn is now available $topicArn"
+#echo "Topic Arn is now available $topicArn"
 
 # setting display name for the topic created
 #aws sns set-topic-attributes --topic-arn $topicArn --attribute-name DisplayName --attribute-value snsself
 
 #subscribing to the created topic
-aws sns subscribe --topic-arn "arn:aws:sns:us-east-1:311615471368:snsself" --protocol sms --notification-endpoint 13123950502
+aws sns subscribe --topic-arn arn:aws:sns:us-east-1:311615471368:snsself --protocol sms --notification-endpoint 13123950502
 
 # waiting for two minutes for the user to authenticate
 
@@ -83,7 +83,7 @@ echo -ne "."
 done
 
 # publishing message
-aws sns publish --topic-arn "arn:aws:sns:us-east-1:311615471368:snsself" --message "Alarm Trigger"
+aws sns publish --topic-arn arn:aws:sns:us-east-1:311615471368:snsself --message "Alarm Trigger"
 
 # creating cloud watch metrics
 echo "Cloud metrics when CPU exceeds 30 percent"
