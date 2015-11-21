@@ -128,7 +128,7 @@ $ifsubscribed=0;
 // creating sns topic
 
 $snsclient = new Aws\Sns\SnsClient([
-	'version' => 'latest'
+	'version' => 'latest',
 	'region' => 'us-east-1'
 )];
 
