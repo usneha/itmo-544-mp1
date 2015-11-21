@@ -62,42 +62,42 @@ echo "creating auto scaling group"
 
 # creating an sns topic for being notified in case CPU exceeds or scales down
 
-#aws sns create-topic --name snsself -Region us-east-1
+aws sns create-topic --name snsself 
 
-#topicArn=(`aws sns create-topic --name snsself`)
+topicArn=(`aws sns create-topic --name snsself`)
 
-#echo "Topic Arn is now available $topicArn"
+echo "Topic Arn is now available $topicArn"
 
 # setting display name for the topic created
-#aws sns set-topic-attributes --topic-arn $topicArn --attribute-name DisplayName --attribute-value snsself
+aws sns set-topic-attributes --topic-arn $topicArn --attribute-name DisplayName --attribute-value snsself
 
 #subscribing to the created topic
-#aws sns subscribe --topic-arn arn:aws:sns:us-east-1:311615471368:snsself --protocol sms --notification-endpoint 13123950502
+aws sns subscribe --topic-arn $topicArn --protocol email --notification-endpoint usneha@hawk.iit.edu
 
 # waiting for two minutes for the user to authenticate
 
-#for var in {0..120}
-#do
-#echo -ne "."
- # sleep 1
-#done
+for var in {0..120}
+do
+echo -ne "."
+  sleep 1
+done
 
 # publishing message
-#aws sns publish --topic-arn arn:aws:sns:us-east-1:311615471368:snsself --message "Alarm Trigger"
+aws sns publish --topic-arn $topicArn --message "Alarm Trigger"
 
-chmod 700 ./itmo-544-mp1/snsself.php
-php ./itmo-544-mp1/snsself.php
+#chmod 700 ./itmo-544-mp1/snsself.php
+#php ./itmo-544-mp1/snsself.php
 
 
 # creating cloud watch metrics
 echo "Cloud metrics when CPU exceeds 30 percent"
 
-#aws cloudwatch put-metric-alarm --alarm-name usneha-CPU30 --alarm-description "Alarm for checking  CPU gt 30 percent" --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 300 --threshold 30 --comparison-operator GreaterThanOrEqualToThreshold  --dimensions Name=AutoScalingGroupName,Value=usnehaAsg --evaluation-periods 2 --alarm-actions "arn:aws:sns:us-east-1:311615471368:snsself" --unit Percent
+#aws cloudwatch put-metric-alarm --alarm-name usneha-CPU30 --alarm-description "Alarm for checking  CPU gt 30 percent" --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 300 --threshold 30 --comparison-operator GreaterThanOrEqualToThreshold  --dimensions Name=AutoScalingGroupName,Value=usnehaAsg --evaluation-periods 2 --alarm-actions arn:aws:sns:us-east-1:311615471368:snsself --unit Percent
 
 
 echo "Cloud metrics When CPU scales down to 10"
 
-#aws cloudwatch put-metric-alarm --alarm-name usneha-CPU10 --alarm-description "Alarm for checking cpu lt 10 percent" --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 300 --threshold 10 --comparison-operator LessThanOrEqualToThreshold  --dimensions Name=AutoScalingGroupName,Value=usnehaAsg --evaluation-periods 2 --alarm-actions "arn:aws:sns:us-east-1:311615471368:snsself" --unit Percent
+#aws cloudwatch put-metric-alarm --alarm-name usneha-CPU10 --alarm-description "Alarm for checking cpu lt 10 percent" --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 300 --threshold 10 --comparison-operator LessThanOrEqualToThreshold  --dimensions Name=AutoScalingGroupName,Value=usnehaAsg --evaluation-periods 2 --alarm-actions arn:aws:sns:us-east-1:311615471368:snsself --unit Percent
 
 
 # creating db subnet group
