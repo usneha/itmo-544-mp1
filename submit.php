@@ -130,7 +130,7 @@ $ifsubscribed=0;
 $snsclient = new Aws\Sns\SnsClient([
 	'version' => 'latest',
 	'region' => 'us-east-1'
-)];
+]);
 
 $result = $snsclient->createTopic(array(
     // Name is required
