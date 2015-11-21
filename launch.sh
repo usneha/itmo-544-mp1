@@ -62,7 +62,7 @@ echo "creating auto scaling group"
 
 # creating an sns topic for being notified in case CPU exceeds or scales down
 
-aws sns create-topic --name snsself
+aws sns create-topic --name snsself -Region us-east-1
 
 topicArn=(`aws sns create-topic --name snsself`)
 
