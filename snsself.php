@@ -10,7 +10,7 @@
 	}
 	else {
 		echo "Subscribing for:13123950502";
-	$phonee = '13123950502';
+	$phone = '13123950502';
 	}
 
 
@@ -19,19 +19,19 @@ $snsclient = new Aws\Sns\SnsClient([
 	'version' => 'latest',
 	'region' => 'us-east-1'
 ]);
-$result = $snsclient->createTopic(array(
+#$result = $snsclient->createTopic(array(
     // Name is required
-    'Name' => 'CloudTrigger',
-));
+ #   'Name' => 'CloudTrigger',
+#));
 #echo "Topic Created";
-echo $result;
-$topicArn = $result['TopicArn'];
+#echo $result;
+#$topicArn = $result['TopicArn'];
 // set topic attributes to set a diaply name for topic
-$result = $snsclient->setTopicAttributes([
-	'AttributeName' => 'DisplayName',
-	'AttributeValue' => 'CloudTrigger',
-	'TopicArn' => $topicArn,
-]);
+#$result = $snsclient->setTopicAttributes([
+#	'AttributeName' => 'DisplayName',
+#	'AttributeValue' => 'CloudTrigger',
+#	'TopicArn' => $topicArn,
+#]);
 echo "set display name to topic";
 for($i=0;$i<120;$i++){
  echo "=";
@@ -39,13 +39,13 @@ for($i=0;$i<120;$i++){
 // returns the subscription arn
 	$result = $snsclient->subscribe([
     		// TopicArn is required
-    		'TopicArn' => $topicArn,
+    		'TopicArn' => 'arn:aws:sns:us-east-1:311615471368:snsself',
     		// Protocol is required
     		'Protocol' => 'sms',
-    		'Endpoint' => $phone,
+    		'Endpoint' => '13123950502',
 	]);
 	
-	echo "Subcribed to topic for $phone";
+	echo "Subcribed to topic for 3123950502";
 	echo $result;
 for($i=0;$i<120;$i++){
  echo "=";
@@ -53,7 +53,7 @@ for($i=0;$i<120;$i++){
 $result = $snsclient->publish([
 	'Message' => 'Check AWS',
 	'Subject' => 'Cloud Trigger',
-	'TopicArn' => $topicArn,
+	'TopicArn' => 'arn:aws:sns:us-east-1:311615471368:snsself',
 ]); 
 
 
