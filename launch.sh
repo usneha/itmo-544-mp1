@@ -64,7 +64,7 @@ echo "creating auto scaling group"
 
 aws sns create-topic --name snsself
 
-topicArn =(`aws sns create-topic --name snsself`)
+topicArn=(`aws sns create-topic --name snsself`)
 
 echo "Topic Arn is now available $topicArn"
 
