@@ -24,7 +24,7 @@ FinalS3Url  Varchar(256),
 JpgFileName    Varchar(256),
 Status    TinyInt(3),
 Ifsubscribed TinyInt(3),
-CreationTime  Timestamp DEFAULT CURRENT_TIMESTAMP,
+CreationTime  Timestamp DEFAULT CURRENT_TIMESTAMP
 )";
 print($sql);
 
