@@ -190,7 +190,7 @@ function redirect()
    header('Location: gallery.php', true, 303);
    die();
 }
-//redirect();
+redirect();
 }
 else
 {

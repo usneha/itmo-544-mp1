@@ -51,7 +51,7 @@ aws elb register-instances-with-load-balancer --load-balancer-name usnehaLb --in
 # getting the loadbalancer url to open in the browser
 ELBURL=(`aws elb create-load-balancer --load-balancer-name usnehaLb --listeners Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80 --subnets subnet-935e14f6 --security-groups sg-201e9f44  --output=text`);
 
-firefox $ELBURL
+firefox $ELBURL/index.php 
 
 
 echo "creating launch configuration"
@@ -92,12 +92,12 @@ aws sns publish --topic-arn $topicArn --message "Alarm Trigger"
 # creating cloud watch metrics
 echo "Cloud metrics when CPU exceeds 30 percent"
 
-#aws cloudwatch put-metric-alarm --alarm-name usneha-CPU30 --alarm-description "Alarm for checking  CPU gt 30 percent" --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 300 --threshold 30 --comparison-operator GreaterThanOrEqualToThreshold  --dimensions Name=AutoScalingGroupName,Value=usnehaAsg --evaluation-periods 2 --alarm-actions arn:aws:sns:us-east-1:311615471368:snsself --unit Percent
+aws cloudwatch put-metric-alarm --alarm-name usneha-CPU30 --alarm-description "Alarm for checking  CPU gt 30 percent" --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 300 --threshold 30 --comparison-operator GreaterThanOrEqualToThreshold  --dimensions Name=AutoScalingGroupName,Value=usnehaAsg --evaluation-periods 2 --alarm-actions $topicArn --unit Percent
 
 
 echo "Cloud metrics When CPU scales down to 10"
 
-#aws cloudwatch put-metric-alarm --alarm-name usneha-CPU10 --alarm-description "Alarm for checking cpu lt 10 percent" --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 300 --threshold 10 --comparison-operator LessThanOrEqualToThreshold  --dimensions Name=AutoScalingGroupName,Value=usnehaAsg --evaluation-periods 2 --alarm-actions arn:aws:sns:us-east-1:311615471368:snsself --unit Percent
+aws cloudwatch put-metric-alarm --alarm-name usneha-CPU10 --alarm-description "Alarm for checking cpu lt 10 percent" --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 300 --threshold 10 --comparison-operator LessThanOrEqualToThreshold  --dimensions Name=AutoScalingGroupName,Value=usnehaAsg --evaluation-periods 2 --alarm-actions $topicArn --unit Percent
 
 
 # creating db subnet group
