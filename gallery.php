@@ -109,6 +109,10 @@ while ($row = $res->fetch_assoc()) {
     echo "<img src =\" " . $row['RawS3Url'] . "\" /><img src =\"" .$row['FinishedS3Url'] . "\"/>";
   //  echo $row['RawS3Url'];
 #echo $row['id'] . "Email: " . $row['email'];
+$image = new Imagick($row['RawS3Url']);
+$image->thumbnailImage(80,0);
+
+echo $image;
 }
 $link->close();
 ?>
