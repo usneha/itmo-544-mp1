@@ -111,7 +111,7 @@ result= aws rds create-db-instance --db-name usnehadb --db-instance-identifier u
 
 # waiting for the DB instance to be available
 
-aws rds wait db-instance-available --db-instance-identifier usneha
+aws rds wait db-instance-available --db-instance-identifier usnehadb
  
 echo "Creating DB instance read replica"
 
