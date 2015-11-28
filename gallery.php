@@ -126,7 +126,10 @@ while ($row = $res->fetch_assoc()) {
 #echo $row['id'] . "Email: " . $row['email'];
 $image = new Imagick($row['RawS3Url']);
 $image->thumbnailImage(80,0);
-echo "<img src=$image />";
+
+$thumbnail=$image->getImageBlob();
+echo $thumbnail;
+echo "<img src=$thumbnail />";
 #echo $image;
 }
 $link->close();
