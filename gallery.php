@@ -105,14 +105,29 @@ $link->real_query("SELECT * FROM items");
 $res = $link->use_result();
 echo "Result set order...\n";
 
+/*
+while($row = $res->fetch_assoc()){
+	$image = new Imagick($row['RawS3Url']);
+	$image->thumbnailImage(80,0);
+	
+	print "before going to s3final.php";
+
+	include 's3final.php';
+
+	print "out of s3final.php";
+}
+*/
+
+
+
 while ($row = $res->fetch_assoc()) {
     echo "<img src =\" " . $row['RawS3Url'] . "\" /><img src =\"" .$row['FinishedS3Url'] . "\"/>";
   //  echo $row['RawS3Url'];
 #echo $row['id'] . "Email: " . $row['email'];
 $image = new Imagick($row['RawS3Url']);
 $image->thumbnailImage(80,0);
-
-echo $image;
+echo "<img src=$image />";
+#echo $image;
 }
 $link->close();
 ?>
