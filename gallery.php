@@ -128,7 +128,7 @@ $image = new Imagick($row['RawS3Url']);
 $image->thumbnailImage(80,0);
 
 $thumbnail=$image->getImageBlob();
-echo $thumbnail;
+#echo $thumbnail;
 echo "<img src=$thumbnail />";
 #echo $image;
 }

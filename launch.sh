@@ -113,6 +113,7 @@ result= aws rds create-db-instance --db-name usnehadb --db-instance-identifier u
 
 aws rds wait db-instance-available --db-instance-identifier usneha
  
+: '
 echo "Creating DB instance read replica"
 
 aws rds create-db-instance-read-replica --db-instance-identifier usnehadbreplica --source-db-instance-identifier usneha --db-instance-class db.t1.micro --availability-zone us-west-2a
@@ -123,7 +124,7 @@ aws rds create-db-instance-read-replica --db-instance-identifier usnehadbreplica
 aws rds wait db-instance-available --db-instance-identifier usnehadbreplica
 
 aws rds wait db-instance-available --db-instance-identifier usneha
-
+'
 # creating permission for running dbcreate.sh file
 chmod 700 ./itmo-544-mp1/dbcreate.sh
 ./itmo-544-mp1/dbcreate.sh
