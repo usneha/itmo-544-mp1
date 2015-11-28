@@ -70,9 +70,10 @@ print 'outside the create bucket command';
 
 
 // trying framed image .... yet to implement thumbnail
-// reference http://php.net/manual/en/imagick.writeimage.php
+// reference: http://php.net/manual/en/imagick.writeimage.php
+// reference: stackoverflow
 	$imgpath = new Imagick($uploadfile);
-	$imgpath->frameImage();
+	$imgpath->frameImage('#aabbcc',20,20,5,5);
 	mkdir("/tmp/Image");
 $ext = end(explode('.', $fname));
 
