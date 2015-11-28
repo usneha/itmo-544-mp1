@@ -124,12 +124,12 @@ while ($row = $res->fetch_assoc()) {
     echo "<img src =\" " . $row['RawS3Url'] . "\" /><img src =\"" .$row['FinishedS3Url'] . "\"/>";
   //  echo $row['RawS3Url'];
 #echo $row['id'] . "Email: " . $row['email'];
-$image = new Imagick($row['RawS3Url']);
-$image->thumbnailImage(80,0);
+#$image = new Imagick($row['RawS3Url']);
+#$image->thumbnailImage(80,0);
 
-$thumbnail=$image->getImageBlob();
+#$thumbnail=$image->getImageBlob();
 #echo $thumbnail;
-echo "<img src=$thumbnail />";
+#<img src=<?php $thumbnail
 #echo $image;
 }
 $link->close();

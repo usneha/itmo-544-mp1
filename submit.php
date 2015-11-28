@@ -23,7 +23,7 @@
 	if (isset ($_FILES['userfile'])){
 		$uploaddir = '/tmp/';
 		$uploadfile = $uploaddir. basename($_FILES['userfile']['name']);
-
+		$fname = $_FILES['userfile']['name'];
 	if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
 		print "File is valid, and was successfully uploaded.\n";
 	} else {
@@ -65,6 +65,47 @@ print 'outside the create bucket command';
 
 	echo $url;
 	echo "s3 file uploaded";
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+// trying framed image .... yet to implement thumbnail
+// reference http://php.net/manual/en/imagick.writeimage.php
+	$imgpath = new Imagick($uploadfile);
+	$imgpath->frameImage();
+	mkdir("/tmp/Image");
+$ext = end(explode('.', $fname));
+
+echo "file type is $ext";
+$path = '/tmp/Image/';
+$imageid = uniqid("Id");
+// concatenating name and type
+$imglocation = $imageid . '.' . $ext;
+$finalImgPath = $path . $imglocation;
+echo $ImgPath;
+
+$imgpath->writeImage($finalImgPath); 
+
+//creating bucket to upload framed image
+$frames3bucket = uniqid("frameimage",false);
+echo $frames3bucket;
+
+$result = $s3->createBucket([
+    'ACL' => 'public-read',
+    'Bucket' => $frames3bucket,
+]);
+$result = $s3->putObject([
+    'ACL' => 'public-read',
+    'Bucket' => $frames3bucket,
+   'Key' => "flipped".$imglocation,
+'SourceFile' => $finalImgPath,
+]);
+
+$finishedimgurl=$result['ObjectURL'];
+
+echo "processed image uploaded to s3";
+// ------------------------------------------------------------------------------------------------------------------
+
 	$rds = new Aws\Rds\RdsClient([
     		'version' => 'latest',
     		'region'  => 'us-west-2'
@@ -103,15 +144,7 @@ $email = $_POST['email'];
 $phone = $_POST['phone'];
 $s3rawurl = $url; 
 
-
-#$image = new Imagick($s3rawurl);
-#$image->thumbnailImage(80,0);
-
-#echo $image;
-
-
-
-$s3finishedurl = "none";
+$s3finishedurl = $finishedimgurl;
 $filename = basename($_FILES['userfile']['name']);
 $status =0;
 $ifsubscribed=0;
