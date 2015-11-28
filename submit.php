@@ -61,6 +61,8 @@ print 'outside the create bucket command';
 	]);  
 
 	$url = $result['ObjectURL'];
+
+
 	echo $url;
 	echo "s3 file uploaded";
 	$rds = new Aws\Rds\RdsClient([
@@ -100,6 +102,15 @@ print 'outside the create bucket command';
 $email = $_POST['email'];
 $phone = $_POST['phone'];
 $s3rawurl = $url; 
+
+
+#$image = new Imagick($s3rawurl);
+#$image->thumbnailImage(80,0);
+
+#echo $image;
+
+
+
 $s3finishedurl = "none";
 $filename = basename($_FILES['userfile']['name']);
 $status =0;
@@ -127,6 +138,7 @@ $ifsubscribed=0;
     		echo "No output!";
 	}
 
+/*
 // creating sns topic
 
 $snsclient = new Aws\Sns\SnsClient([
@@ -180,7 +192,7 @@ $result = $snsclient->publish([
 	'TopicArn' => $topicArn,
 ]); 
 
-
+*/
 $link->close();
 
 
