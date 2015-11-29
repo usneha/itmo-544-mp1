@@ -17,13 +17,14 @@ $_SESSION['var']=$regvalue;
 </head>
 <body>
 
-<form method="get" action="gallery.php">
+<!--<form method="get" action="gallery.php">
 	
 	<a href="gallery.php"/>
 	<input type="text" name="varname" value=""/>
 
 </form>
-
+-->
+ <a href="gallery.php">Gallery</a> <br><br>
  <a href="introspection.php">Create DB Dump!</a>
 
 

@@ -69,10 +69,10 @@ require 'vendor/autoload.php';
  #   'version' => 'latest',
   #  'region'  => 'us-east-2'
 		#]);
-
+use Aws\Rds\RdsClient;
 if($regvalue==1){
 
-	use Aws\Rds\RdsClient;
+	//use Aws\Rds\RdsClient;
 	$client = RdsClient::factory(array(
 		'version' => 'latest',
 		'region'  => 'us-west-2'
@@ -141,7 +141,7 @@ while($row = $res->fetch_assoc()){
 	$link->close();
 	} else {
 
-		use Aws\Rds\RdsClient;
+	//	use Aws\Rds\RdsClient;
 	$client = RdsClient::factory(array(
 		'version' => 'latest',
 		'region'  => 'us-west-2'
