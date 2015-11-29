@@ -72,11 +72,11 @@ session_start();
 </form>
 -->
 <!--
-//<?php
+
  #$regvalue=1;
  #echo "<a href='gallery.php?regvalue=1'>Gallery</a>";
 
-//?>
+
 
  <a href="introspection.php">Create DB Dump!</a>
 -->
