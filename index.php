@@ -2,6 +2,9 @@
 session_start();
 ?>
 
+<!DOCTYPE html>
+ <meta charset="UTF-8">
+
 <html>
 <head>
 <title> Welcome to Image Uploading page! </title>
@@ -11,6 +14,23 @@ session_start();
 
 </head>
 <body>
+<?php
+
+session_start();
+$regvalue =1;
+$_SESSION['var']= $regvalue;
+
+?>
+
+<form method="get" action="gallery.php">
+
+	<input type="text" name="varname" value=""/>
+	<input type="submit"/>
+
+</form>
+
+ <a href="introspection.php">Create DB Dump!</a>
+
 
 <form enctype="multipart/form-data" action="submit.php" method="post" class="form-horizontal" role="form">
 	
