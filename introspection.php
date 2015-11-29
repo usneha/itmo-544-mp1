@@ -59,6 +59,32 @@ $result = $s3->putObject([
 'SourceFile' => $finalPath,
 ]);
 
+// reference: https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html#putbucketlifecycleconfiguration
+
+$result = $s3->putBucketLifecycleConfiguration([
+    'Bucket' => $bucketname, // REQUIRED
+    'LifecycleConfiguration' => [
+        'Rules' => [ // REQUIRED
+            [
+                'Expiration' => [
+           
+                    'Days' => 1,
+                ],
+                
+                'NoncurrentVersionExpiration' => [
+                    'NoncurrentDays' => 1,
+                ],
+                ,
+                'Prefix' => ' ', // REQUIRED
+                'Status' => 'Enabled' // REQUIRED
+        
+            ],
+            // ...
+        ],
+    ],
+])
+
+
 
 mysql_close($link);
 	echo "Create db dump in s3!";
