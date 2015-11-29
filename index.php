@@ -1,13 +1,9 @@
 <?php
 session_start();
-#$regvalue=1;
-#$_SESSION['var']=$regvalue;
 
-?>
 
 <!DOCTYPE html>
  <meta charset="UTF-8">
-
 <html>
 <head>
 <title> Welcome to Image Uploading page! </title>
@@ -64,22 +60,22 @@ session_start();
 </div>
 
 
-<!--<form method="get" action="gallery.php">
+#<form method="get" action="gallery.php">
 	
-	<a href="gallery.php"/>
-	<input type="text" name="varname" value=""/>
+#	<a href="gallery.php"/>
+#	<input type="text" name="varname" value=""/>
 
-</form>
--->
-<!--
+#</form>
+
+
 
  #$regvalue=1;
  #echo "<a href='gallery.php?regvalue=1'>Gallery</a>";
 
 
 
- <a href="introspection.php">Create DB Dump!</a>
--->
+# <a href="introspection.php">Create DB Dump!</a>
+
 
 <form enctype="multipart/form-data" action="submit.php" method="post" class="form-horizontal" role="form">
 	
@@ -101,4 +97,4 @@ session_start();
 
 </body>
 </html> 
-
+?>
