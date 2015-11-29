@@ -44,7 +44,7 @@ echo "load balancer health check"
 aws elb configure-health-check --load-balancer-name usnehaLb --health-check Target=HTTP:80/index.php,Interval=30,UnhealthyThreshold=2,HealthyThreshold=2,Timeout=3
 
 # adding cookie stickiness policy
-aws elb create-lb-cookie-stickiness-policy --load-balancer-name usnehaLb --policy-name usnehaLbpolicy
+#aws elb create-lb-cookie-stickiness-policy --load-balancer-name usnehaLb --policy-name usnehaLbpolicy
 #--cookie-expiration-period 60
 
 
@@ -55,8 +55,9 @@ aws elb register-instances-with-load-balancer --load-balancer-name usnehaLb --in
 # getting the loadbalancer url to open in the browser
 ELBURL=(`aws elb create-load-balancer --load-balancer-name usnehaLb --listeners Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80 --subnets subnet-935e14f6 --security-groups sg-201e9f44  --output=text`);
 
+echo "creating stickiness policy"
 # adding cookie stickiness policy
-#aws elb create-lb-cookie-stickiness-policy --load-balancer-name usnehaLb --policy-name usnehaLbpolicy
+aws elb create-lb-cookie-stickiness-policy --load-balancer-name usnehaLb --policy-name usnehaLbpolicy
 #--cookie-expiration-period 60
 
 firefox $ELBURL/index.php 
