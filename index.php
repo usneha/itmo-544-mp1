@@ -1,5 +1,7 @@
 <?php
 session_start();
+$regvalue=1;
+$_SESSION['var']=$regvalue;
 ?>
 
 <!DOCTYPE html>
@@ -14,18 +16,11 @@ session_start();
 
 </head>
 <body>
-<?php
-
-session_start();
-$regvalue =1;
-$_SESSION['var']= $regvalue;
-
-?>
 
 <form method="get" action="gallery.php">
-
+	
+	<a href="gallery.php"/>
 	<input type="text" name="varname" value=""/>
-	<input type="submit"/>
 
 </form>
 

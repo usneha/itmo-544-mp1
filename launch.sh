@@ -51,6 +51,10 @@ aws elb register-instances-with-load-balancer --load-balancer-name usnehaLb --in
 # getting the loadbalancer url to open in the browser
 ELBURL=(`aws elb create-load-balancer --load-balancer-name usnehaLb --listeners Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80 --subnets subnet-935e14f6 --security-groups sg-201e9f44  --output=text`);
 
+
+aws elb create-lb-cookie-stickiness-policy --load-balancer-name usnehaLb --policy-name usnehaLbpolicy
+#--cookie-expiration-period 60
+
 firefox $ELBURL/index.php 
 
 
