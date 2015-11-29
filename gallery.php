@@ -72,6 +72,8 @@ require 'vendor/autoload.php';
 use Aws\Rds\RdsClient;
 if($regvalue==1){
 
+	echo "var is 1";
+	print "var is 1";
 	//use Aws\Rds\RdsClient;
 	$client = RdsClient::factory(array(
 		'version' => 'latest',
@@ -133,13 +135,11 @@ while($row = $res->fetch_assoc()){
 #$image = new Imagick($row['RawS3Url']);
 #$image->thumbnailImage(80,0);
 
-#$thumbnail=$image->getImageBlob();
-#echo $thumbnail;
-#<img src=<?php $thumbnail
-#echo $image;
+
 	}
 	$link->close();
-	} else {
+	} 
+else {
 
 	//	use Aws\Rds\RdsClient;
 	$client = RdsClient::factory(array(

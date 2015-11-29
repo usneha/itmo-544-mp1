@@ -73,7 +73,7 @@ print 'outside the create bucket command';
 // reference: http://php.net/manual/en/imagick.writeimage.php
 // reference: stackoverflow
 	$imgpath = new Imagick($uploadfile);
-	$imgpath->frameImage('#aabbcc',20,20,5,5);
+	$imgpath->frameImage('#a00000',20,20,25,25);
 	mkdir("/tmp/Image");
 $ext = end(explode('.', $fname));
 
