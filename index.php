@@ -1,7 +1,8 @@
 <?php
 session_start();
-$regvalue=1;
-$_SESSION['var']=$regvalue;
+#$regvalue=1;
+#$_SESSION['var']=$regvalue;
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,12 @@ $_SESSION['var']=$regvalue;
 
 </form>
 -->
- <a href="gallery.php">Gallery</a> <br><br>
+<?php
+ #$regvalue=1;
+ echo "<a href='gallery.php?regvalue=1'>Gallery</a>";
+
+?>
+
  <a href="introspection.php">Create DB Dump!</a>
 
 

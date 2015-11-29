@@ -56,7 +56,7 @@ $('.gallery-item').magnificPopup({
 <?php
 session_start();
 
-$regvalue = $_GET['var'];
+$regvalue = $_GET['regvalue'];
 
 
 #$email = $_POST["useremail"];
