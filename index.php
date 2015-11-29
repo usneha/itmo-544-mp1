@@ -1,9 +1,10 @@
 <?php
 session_start();
 
-
-<!DOCTYPE html>
- <meta charset="UTF-8">
+?>
+//<!DOCTYPE html>
+ 
+<meta charset="UTF-8">
 <html>
 <head>
 <title> Welcome to Image Uploading page! </title>
@@ -53,28 +54,28 @@ session_start();
 
 		<li><a href="index.php">Home</a></li>
 		<li><a href='gallery.php?regvalue=1'>Gallery</a></li>
-		<li><a href='introspection.php'>Create Db Dump!</a></li>
+		<li><a href="introspection.php">Create Db Dump!</a></li>
 		
 	</ul>
 
 </div>
 
 
-#<form method="get" action="gallery.php">
+<form method="get" action="gallery.php">
 	
-#	<a href="gallery.php"/>
-#	<input type="text" name="varname" value=""/>
+	<a href="gallery.php"/>
+	<input type="text" name="varname" value=""/>
 
-#</form>
-
-
-
- #$regvalue=1;
- #echo "<a href='gallery.php?regvalue=1'>Gallery</a>";
+</form>
 
 
+<!--
+ $regvalue=1;
+ echo "<a href='gallery.php?regvalue=1'>Gallery</a>";
+-->
 
-# <a href="introspection.php">Create DB Dump!</a>
+
+<a href="introspection.php">Create DB Dump!</a>
 
 
 <form enctype="multipart/form-data" action="submit.php" method="post" class="form-horizontal" role="form">
@@ -97,4 +98,3 @@ session_start();
 
 </body>
 </html> 
-?>
