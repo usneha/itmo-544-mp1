@@ -49,8 +49,8 @@ fi
 
 mapfile -t dbInstanceARR < <(aws rds describe-db-instances --output json | grep "\"DBInstanceIdentifier" | sed "s/[\"\:\, ]//g" | sed "s/DBInstanceIdentifier//g" )
 
-if false 
-then
+#if false 
+#then
 
 if [ ${#dbInstanceARR[@]} -gt 0 ]
    then
@@ -67,6 +67,6 @@ fi
 
 #delete db subnet group
 aws rds delete-db-subnet-group --db-subnet-group-name usnehasg
-fi
+#fi
 
 echo "All done"
