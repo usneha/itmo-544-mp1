@@ -82,6 +82,12 @@ session_start();
 
 <!--<a href="introspection.php">Create DB Dump!</a>
 -->
+<form method="post" action="index.php">
+	
+	<h1> Click here if you wish you go into read only mode!</h1>
+	<input type="submit" class="btn btn-default" name"confirm">
+
+</form>
 
 <form enctype="multipart/form-data" action="submit.php" method="post" class="form-horizontal" role="form">
 	
@@ -96,9 +102,18 @@ session_start();
 	<div class="form-group">
 		Upload File : <input type="file" name="userfile">
 	</div>
+	
+	<?php
+		if(isset($_POST["confirm"])){
 	<div>
-		<input type="submit" class="btn btn-default">
+		echo "You cannot upload pics! You are in read only mode! ";
 	</div>
+	}else{
+	<div>
+		echo "<input type="submit" class="btn btn-default">";
+	</div>
+	}
+	?>
 </form>
 
 </body>
