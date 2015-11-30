@@ -64,35 +64,35 @@ firefox $ELBURL/index.php
 
 
 echo "creating launch configuration"
-#aws autoscaling create-launch-configuration --launch-configuration-name usnehaLc --image-id $1 --key-name $4  --security-groups $5 --instance-type $3 --user-data file://itmo-544-mp1-env/install-env.sh --iam-instance-profile phpdeveloperRole
+aws autoscaling create-launch-configuration --launch-configuration-name usnehaLc --image-id $1 --key-name $4  --security-groups $5 --instance-type $3 --user-data file://itmo-544-mp1-env/install-env.sh --iam-instance-profile phpdeveloperRole
 
 echo "creating auto scaling group"
-#aws autoscaling create-auto-scaling-group --auto-scaling-group-name usnehaAsg --launch-configuration-name usnehaLc --load-balancer-names usnehaLb  --health-check-type ELB --min-size 1 --max-size 3 --desired-capacity 2 --default-cooldown 600 --health-check-grace-period 120 --vpc-zone-identifier $6 
+aws autoscaling create-auto-scaling-group --auto-scaling-group-name usnehaAsg --launch-configuration-name usnehaLc --load-balancer-names usnehaLb  --health-check-type ELB --min-size 1 --max-size 3 --desired-capacity 2 --default-cooldown 600 --health-check-grace-period 120 --vpc-zone-identifier $6 
 
 # creating an sns topic for being notified in case CPU exceeds or scales down
 
-#aws sns create-topic --name snsself 
+aws sns create-topic --name snsself 
 
-#topicArn=(`aws sns create-topic --name snsself`)
+topicArn=(`aws sns create-topic --name snsself`)
 
 echo "Topic Arn is now available $topicArn"
 
 # setting display name for the topic created
-#aws sns set-topic-attributes --topic-arn $topicArn --attribute-name DisplayName --attribute-value snsself
+aws sns set-topic-attributes --topic-arn $topicArn --attribute-name DisplayName --attribute-value snsself
 
 #subscribing to the created topic
-#aws sns subscribe --topic-arn $topicArn --protocol email --notification-endpoint usneha@hawk.iit.edu
+aws sns subscribe --topic-arn $topicArn --protocol email --notification-endpoint usneha@hawk.iit.edu
 
 # waiting for two minutes for the user to authenticate
 
-#for var in {0..120}
-#do
-#echo -ne "."
- # sleep 1
-#done
+for var in {0..120}
+do
+echo -ne "."
+  sleep 1
+done
 
 # publishing message
-#aws sns publish --topic-arn $topicArn --message "Alarm Trigger"
+aws sns publish --topic-arn $topicArn --message "Alarm Trigger"
 
 #chmod 700 ./itmo-544-mp1/snsself.php
 #php ./itmo-544-mp1/snsself.php
@@ -101,12 +101,12 @@ echo "Topic Arn is now available $topicArn"
 # creating cloud watch metrics
 echo "Cloud metrics when CPU exceeds 30 percent"
 
-#aws cloudwatch put-metric-alarm --alarm-name usneha-CPU30 --alarm-description "Alarm for checking  CPU gt 30 percent" --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 300 --threshold 30 --comparison-operator GreaterThanOrEqualToThreshold  --dimensions Name=AutoScalingGroupName,Value=usnehaAsg --evaluation-periods 2 --alarm-actions $topicArn --unit Percent
+aws cloudwatch put-metric-alarm --alarm-name usneha-CPU30 --alarm-description "Alarm for checking  CPU gt 30 percent" --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 300 --threshold 30 --comparison-operator GreaterThanOrEqualToThreshold  --dimensions Name=AutoScalingGroupName,Value=usnehaAsg --evaluation-periods 2 --alarm-actions $topicArn --unit Percent
 
 
 echo "Cloud metrics When CPU scales down to 10"
 
-#aws cloudwatch put-metric-alarm --alarm-name usneha-CPU10 --alarm-description "Alarm for checking cpu lt 10 percent" --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 300 --threshold 10 --comparison-operator LessThanOrEqualToThreshold  --dimensions Name=AutoScalingGroupName,Value=usnehaAsg --evaluation-periods 2 --alarm-actions $topicArn --unit Percent
+aws cloudwatch put-metric-alarm --alarm-name usneha-CPU10 --alarm-description "Alarm for checking cpu lt 10 percent" --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 300 --threshold 10 --comparison-operator LessThanOrEqualToThreshold  --dimensions Name=AutoScalingGroupName,Value=usnehaAsg --evaluation-periods 2 --alarm-actions $topicArn --unit Percent
 
 
 # creating db subnet group
