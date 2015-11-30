@@ -89,21 +89,8 @@ $result = $s3->putBucketLifecycleConfiguration([
             ],
             // ...
         ],
-    ],
+    ]
 ])
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
