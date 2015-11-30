@@ -82,9 +82,8 @@ $result = $s3->putBucketLifecycleConfiguration([
                 'NoncurrentVersionExpiration' => [
                     'NoncurrentDays' => 1,
                 ],
-                ,
                 'Prefix' => ' ', // REQUIRED
-                'Status' => 'Enabled' // REQUIRED
+                'Status' => 'Enabled', // REQUIRED
                 
             ],
             // ...
