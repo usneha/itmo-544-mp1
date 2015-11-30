@@ -1,11 +1,65 @@
 <!DOCTYPE html>
  <meta charset="UTF-8"> 
 <html>
-	<head><title>This is the introspection page</title></head>
+	<head><title>This is the introspection page</title>
+
+<style type="text/css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        #body{
+
+        background-color: #F9F1DC;
+
+        }
+        .clearer{
+
+        clear: both;
+        height: 100px;
+        width: 100$;
+        margin: 0px 0px auto 0px;
+
+        }
+
+        .main-menu{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: #310c0c;
+        overflow:hidden;
+        }
+
+        .main-menu li{
+        float: left;
+        }
+ .main-menu li a{
+        padding: 10px 20px;
+        display: block;
+        color:white;
+        }
+
+        .main-menu li a:hover{
+
+        background-color: #756251;
+
+        }
+</style>
+</head>
 
 <body>
 
+<div class="clearer">
+        <ul class="main-menu">
+
+                <li><a href="index.php">Home</a></li>
+                <li><a href='gallery.php?regvalue=1'>Gallery</a></li>
+                <li><a href="introspection.php">Create Db Dump!</a></li>
+
+        </ul>
+
+</div>
+
+
 	<h3>Creating db dump in S3!!!</h3>
+	
 	<a href="index.php">Home Page</a>
 </body>
 
