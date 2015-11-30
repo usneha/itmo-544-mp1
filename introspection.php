@@ -91,7 +91,6 @@ mkdir("/tmp/dbDump");
 // path for backup folder
 $dumpPath = '/tmp/dbDump/';
 $fname = uniqid("dbdump", false);
-$append = $fname . '.' . sql;
 $finalPath = $dumpPath . $fname . '.' . sql;
 
 // found this line in stackoverflow
