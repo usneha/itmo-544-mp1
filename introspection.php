@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         #body{
 
-        background-color: #F9F1DC;
+        color: #FFFFCC;
 
         }
         .clearer{

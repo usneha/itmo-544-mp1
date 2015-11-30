@@ -11,6 +11,11 @@ session_start();
 <style type="text/css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	
+	#body{
+	color:#FFFFCC;
+	
+	}
+
 	.clearer{
 	
 	clear: both;
