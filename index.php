@@ -24,7 +24,7 @@ session_start();
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	background-color: #310c)c;
+	background-color: #310c0c;
 	overflow:hidden;
 	}
 
@@ -60,7 +60,7 @@ session_start();
 
 </div>
 
-
+<!--
 <form method="get" action="gallery.php">
 	
 	<a href="gallery.php"/>
@@ -68,15 +68,15 @@ session_start();
 
 </form>
 
-
+-->
 <!--
  $regvalue=1;
  echo "<a href='gallery.php?regvalue=1'>Gallery</a>";
 -->
 
 
-<a href="introspection.php">Create DB Dump!</a>
-
+<!--<a href="introspection.php">Create DB Dump!</a>
+-->
 
 <form enctype="multipart/form-data" action="submit.php" method="post" class="form-horizontal" role="form">
 	

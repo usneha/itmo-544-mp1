@@ -72,8 +72,8 @@ require 'vendor/autoload.php';
 use Aws\Rds\RdsClient;
 if($regvalue==1){
 
-	echo "var is 1";
-	print "var is 1";
+#	echo "var is 1";
+#	print "var is 1";
 	//use Aws\Rds\RdsClient;
 	$client = RdsClient::factory(array(
 		'version' => 'latest',
@@ -81,7 +81,7 @@ if($regvalue==1){
 	));
 
 	$result = $client->describeDBInstances(array(
-    		'DBInstanceIdentifier' => 'usneha',
+    		'DBInstanceIdentifier' => 'usnehadbreplica',
 	));
 
 	$endpoint = "";
@@ -149,7 +149,7 @@ else {
 		'region'  => 'us-west-2'
 	));
 	$result = $client->describeDBInstances(array(
-    		'DBInstanceIdentifier' => 'usneha',
+    		'DBInstanceIdentifier' => 'usnehadbreplica',
 	));
 	$endpoint = "";
 #fetch the DB instance
