@@ -105,7 +105,7 @@ session_start();
 	</div>
 	
 	<?php
-		if(empty($_POST)){
+		if(empty($_POST['confirm1'])){
 	
 		echo "You cannot upload pics! You are in read only mode! ";
 	
