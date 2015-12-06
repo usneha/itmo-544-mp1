@@ -84,12 +84,12 @@ session_start();
 -->
 <form method="post" action="index.php">
 	
-	<h1> Click here if you wish you go into read only mode!</h1>
+	<h4> Click here if you wish you go into read only mode!</h4>
 	<input type="text" name="confirm1" value="yes"><br>
 	<input type="submit" class="btn btn-default" name"confirm">
 
 </form>
-
+<br><br>
 <form enctype="multipart/form-data" action="submit.php" method="post" class="form-horizontal" role="form">
 	
 	<div class="form-group">
@@ -105,7 +105,7 @@ session_start();
 	</div>
 	
 	<?php
-		if(empty($_POST['confirm1'])){
+		if(!empty($_POST['confirm1'])){
 	
 		echo "You cannot upload pics! You are in read only mode! ";
 	
