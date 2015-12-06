@@ -106,13 +106,13 @@ session_start();
 	
 	<?php
 		if(empty($_POST)){
-	<div>
+	
 		echo "You cannot upload pics! You are in read only mode! ";
-	</div>
+	
 	}else{
-	<div>
+	
 		echo "<input type="submit" class="btn btn-default">";
-	</div>
+	
 	}
 	?>
 </form>
