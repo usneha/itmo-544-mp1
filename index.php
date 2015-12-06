@@ -111,7 +111,7 @@ session_start();
 	
 	}else{
 	
-		echo "<input type="submit" class="btn btn-default">";
+		print '<input type="submit" class="btn btn-default">';
 	
 	}
 	?>
